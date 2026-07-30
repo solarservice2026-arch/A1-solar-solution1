@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # A1 Solar Solution Platform
 
 Production-oriented monorepo for A1 Solar Solution: a responsive public website,
@@ -34,3 +35,6 @@ The web app runs at `http://localhost:5173`; the API defaults to
 Development users must be created through Supabase Auth; seed data never includes
 passwords. Start with `docs/README.md`, then see `docs/SUPABASE_SETUP.md` and
 `docs/SECURITY.md`.
+=======
+# A1-solar-solution1
+>>>>>>> c8bf8eaaa5c79a05e6e036eae21151b88fc9e313
