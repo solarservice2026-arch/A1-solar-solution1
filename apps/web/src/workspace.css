@@ -1,0 +1,92 @@
+html{scroll-behavior:smooth}
+.app-layout{grid-template-columns:248px minmax(0,1fr);background:#f4f6f5}
+.app-sidebar{background:#082f35;padding:0 14px 18px;border-right:1px solid #16454b;scrollbar-width:none;-ms-overflow-style:none}
+.app-sidebar::-webkit-scrollbar{display:none;width:0;height:0}
+.app-logo{height:72px;padding:0 10px;border-bottom:1px solid #ffffff14;margin-bottom:14px}
+.app-logo .brandmark{width:34px;height:34px;border-radius:9px}
+.app-logo .brandmark svg{width:19px}
+.app-sidebar nav{gap:2px;overflow-y:auto;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none}
+.app-sidebar nav::-webkit-scrollbar{display:none;width:0;height:0}
+.app-sidebar nav a,.logout{min-height:42px;padding:9px 11px;border-radius:7px;font-size:13px;font-weight:500;letter-spacing:.01em}
+.app-sidebar nav a:hover{background:#ffffff0c;color:#fff}
+.app-sidebar nav a.active{background:#d9f64c;color:#092f35;font-weight:700;box-shadow:inset 0 0 0 1px #e6ff70}
+.app-sidebar nav a svg:last-child{opacity:.55}
+.logout{border-top:1px solid #ffffff14;border-radius:0;padding-top:18px;margin-top:12px}
+.app-main{background:#f4f6f5}
+.app-top{height:72px;padding:0 32px;background:#fff;border-bottom:1px solid #dfe5e2;position:sticky;top:0;z-index:10}
+.header-context{display:flex!important;align-items:center;gap:14px}.header-context>div{display:grid}.header-context small{text-transform:uppercase;letter-spacing:.09em;font-size:9px;font-weight:700}.header-context b{font:650 15px Manrope}
+.back-button{height:36px;display:flex;align-items:center;gap:7px;padding:0 11px;border:1px solid #dce4e1;border-radius:7px;background:#fff;color:#164a50;font-weight:650;cursor:pointer}.back-button:hover{border-color:#0b6b53;background:#f3f8f5}.back-button svg{width:17px}
+.app-user>button{width:36px;height:36px;border:1px solid #e1e7e4;border-radius:8px;display:grid;place-items:center}
+.app-user>button svg{width:18px}
+.app-user span{font-size:13px}.app-user span small{font-size:10px;text-transform:capitalize}
+.app-page{padding:32px clamp(24px,3vw,48px) 60px;max-width:none}
+.app-page .kicker{font-size:10px;letter-spacing:.16em}
+.app-page h1{font-size:30px;letter-spacing:-.025em;margin:7px 0 5px}
+.app-page>p,.page-bar p{font-size:14px;margin:0;color:#6a7778;max-width:720px}
+.page-bar{align-items:flex-end;padding-bottom:22px;border-bottom:1px solid #dfe5e2}
+.primary,.secondary{border-radius:7px;padding:11px 16px;font-size:13px;min-height:40px}
+.primary:hover{background:#c9ed27}.primary:disabled{opacity:.5;cursor:not-allowed}
+.row-actions{display:flex;gap:8px;align-items:center}.danger{border:1px solid #c83d3d;background:#fff0f0;color:#a42323;border-radius:4px;padding:9px 12px;cursor:pointer}.danger:hover{background:#c83d3d;color:#fff}
+.quote-item-grid{display:grid;grid-template-columns:1.1fr 1.4fr 1fr .55fr .8fr .55fr .55fr .9fr auto;gap:10px;align-items:end}.quote-item-grid label{min-width:0}.quote-item-grid input{width:100%}.totals-card{margin-left:auto;max-width:420px;display:grid;gap:8px;padding:18px;background:#f3f6f2;border:1px solid var(--line)}.totals-card span{display:flex;justify-content:space-between}.totals-card span:last-child{font-size:18px;border-top:1px solid var(--line);padding-top:8px}@media(max-width:1100px){.quote-item-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.toolbar{margin:20px 0 14px}.toolbar input{min-width:320px;height:40px;background:#fff;border-color:#d7dfdc;border-radius:7px}
+.toolbar button,.table-wrap button{height:40px;border:1px solid #ccd7d3;background:#fff;border-radius:7px;padding:0 15px;color:#164a50;font-weight:600;cursor:pointer}
+.toolbar button:hover,.table-wrap button:hover{border-color:#0b6b53;background:#f3f8f5}
+.table-wrap{border:1px solid #dce4e1;border-radius:10px;box-shadow:0 1px 2px #102d3208}
+.table-wrap table{font-size:13px}.table-wrap th{height:44px;background:#f8faf9;color:#667477;font-size:10px;letter-spacing:.07em;padding:0 16px}
+.table-wrap td{height:54px;padding:8px 16px;color:#203c41}.table-wrap tbody tr:hover{background:#f9fbfa}
+.empty-state{margin-top:22px;border:1px dashed #cbd7d3;border-radius:10px;padding:58px 24px;background:#fff;box-shadow:none}
+.empty-state>svg{width:32px;height:32px;padding:7px;box-sizing:content-box;border-radius:9px;background:#edf5ef}
+.empty-state h2{font-size:18px;margin:15px 0 4px}.empty-state p{font-size:13px;margin:0}
+.card{border:1px solid #dce4e1;border-radius:10px;padding:24px;box-shadow:0 1px 2px #102d3208}
+.role-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px}
+.role-grid .card{min-height:112px;display:flex;flex-direction:column;justify-content:space-between}
+.role-grid .card small{text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:#718083;font-weight:700}
+.role-grid .card h2{font:700 30px Manrope;margin:12px 0 0;color:#0a4b50}
+.operational-form{max-width:none;margin:18px 0;display:grid;grid-template-columns:repeat(3,minmax(160px,1fr));gap:14px 18px}
+.operational-form h2{grid-column:1/-1;font-size:18px;margin:0 0 4px}
+.operational-form label,.card label{font-size:12px;margin:0;gap:6px;color:#40585c}
+.operational-form input,.operational-form select{height:42px;border-radius:7px;background:#fbfcfc}
+.operational-form>.primary{align-self:end}
+.form-actions{grid-column:1/-1;display:flex;gap:10px;align-items:center}
+.invoice-form{display:block;padding:28px;overflow:hidden}
+.invoice-form>h2{margin:0 0 20px}
+.invoice-fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0}
+.invoice-fields label{min-width:0}
+.invoice-fields .wide-field{grid-column:1/-1}
+.invoice-fields textarea{min-height:92px}
+.invoice-products-head{display:flex;align-items:flex-end;margin-top:28px;padding-bottom:16px}
+.invoice-products-head h3{margin:0 0 4px;font-size:18px}
+.invoice-products-head select{width:min(340px,100%)}
+.invoice-items{display:grid;gap:12px;margin-top:16px}
+.invoice-item{padding:16px;background:#fbfcfc}
+.invoice-footer{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;align-items:stretch;margin-top:18px}
+.invoice-footer>label{display:flex;flex-direction:column}
+.invoice-footer textarea{height:100%;min-height:120px}
+.invoice-footer .totals-card{width:100%;max-width:none;margin:0}
+.invoice-form .form-actions{margin-top:20px}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form){display:block;padding:28px;overflow:hidden}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>h2{margin:0 0 20px}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>label{display:flex;flex-direction:column;margin-top:16px}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>label textarea{min-height:100px}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.page-bar{display:flex;margin-top:28px;padding-bottom:16px;align-items:flex-end}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.page-bar h3{font-size:18px;margin:0}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.page-bar select{width:min(340px,100%)}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.card{margin-top:12px;padding:16px;background:#fbfcfc}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.totals-card{margin-top:18px}
+.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.primary{margin-top:20px;min-width:180px}
+.detail-grid{gap:16px;margin-top:22px}.detail-grid .operational-form{display:flex;flex-direction:column;margin:0}
+.installation-list{display:grid;gap:14px;margin-top:22px}.installation-card{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(160px,.7fr) minmax(220px,1fr);gap:18px;align-items:end}.installation-card h2{margin:5px 0;font-size:20px}.installation-card p{margin:0;color:#667477}.installation-card>.row-actions,.installation-card>.document-link{grid-column:1/-1}.upload-button{display:inline-flex;align-items:center;cursor:pointer}.document-link{text-align:left;border:0;background:#edf5ef;color:#0b6b53;padding:10px 12px;border-radius:7px;cursor:pointer}
+.pill{border-radius:999px;font-weight:600}.form-error{border-radius:7px;border-left:0;border:1px solid #efc9c9;font-size:13px}
+@media(max-width:1050px){.operational-form{grid-template-columns:repeat(2,minmax(160px,1fr))}}
+@media(max-width:1250px){.invoice-fields{grid-template-columns:repeat(2,minmax(0,1fr))}.invoice-footer{grid-template-columns:1fr 320px}}
+@media(max-width:1200px){.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.detail-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.app-layout{grid-template-columns:1fr}.app-top{height:64px;padding:0 16px}.app-page{padding:24px 16px 48px}.operational-form{grid-template-columns:1fr}.toolbar{width:100%}.toolbar input{min-width:0}.page-bar{align-items:flex-start}.role-grid{grid-template-columns:repeat(2,1fr)}.back-button span{display:none}.back-button{width:36px;padding:0;justify-content:center}.header-context{gap:8px}}
+.app-user>.mobile-back-button{display:none}
+@media(max-width:850px){.header-context>.desktop-back-button,.app-user>.desktop-notification-button{display:none}.app-user>.mobile-back-button{display:flex}}
+.app-sidebar,.app-sidebar nav{scrollbar-width:none!important;scrollbar-color:transparent transparent!important;-ms-overflow-style:none!important}
+.app-sidebar::-webkit-scrollbar,.app-sidebar nav::-webkit-scrollbar{display:none!important;width:0!important;height:0!important;background:transparent!important}
+@media(max-width:850px){.installation-card{grid-template-columns:1fr}}
+@media(max-width:760px){.invoice-form{padding:18px}.invoice-fields,.invoice-footer{grid-template-columns:1fr}.invoice-products-head{align-items:stretch}.invoice-products-head select{width:100%}}
+@media(max-width:700px){.operational-form:has(>h2 + .detail-grid):not(.invoice-form){padding:18px}.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.detail-grid{grid-template-columns:1fr}.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.page-bar{align-items:stretch}.operational-form:has(>h2 + .detail-grid):not(.invoice-form)>.page-bar select{width:100%}}
+@media(max-width:520px){.role-grid{grid-template-columns:1fr}.app-page h1{font-size:26px}.table-wrap{border-radius:7px}}

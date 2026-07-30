@@ -1,0 +1,2 @@
+import { describe,expect,it } from "vitest";import { liveConfigured,userClient } from "./helper";
+describe.skipIf(!liveConfigured)("profiles RLS",()=>{it("customer sees only own profile",async()=>{const client=await userClient("CUSTOMER_A");const {data,error}=await client.from("profiles").select("id");expect(error).toBeNull();expect(data).toHaveLength(1)});it("no-role user cannot list private profiles",async()=>{const client=await userClient("NO_ROLE");const {data}=await client.from("profiles").select("id");expect((data??[]).length).toBeLessThanOrEqual(1)})});

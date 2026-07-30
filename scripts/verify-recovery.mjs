@@ -1,0 +1,37 @@
+import "dotenv/config";
+import crypto from "node:crypto";
+import { createClient } from "@supabase/supabase-js";
+import { readFile,writeFile } from "node:fs/promises";
+const path=".auth/e2e-credentials.json";
+const credentials=JSON.parse(await readFile(path,"utf8"));
+const account=credentials.NO_ROLE;
+if(!account)throw new Error("Missing generated recovery test account");
+const anon=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_ANON_KEY);
+const admin=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_SERVICE_ROLE_KEY,{auth:{persistSession:false}});
+if(account.email.endsWith(".test")){
+ const users=await admin.auth.admin.listUsers({page:1,perPage:1000});
+ const user=users.data.users.find(item=>item.user_metadata?.full_name==="E2E NO_ROLE");
+ if(!user)throw new Error("Recovery test user was not found");
+ account.email="a1-e2e-no-role@example.com";
+ const changed=await admin.auth.admin.updateUserById(user.id,{email:account.email,email_confirm:true});
+ if(changed.error)throw changed.error;
+ credentials.NO_ROLE.email=account.email;await writeFile(path,JSON.stringify(credentials),"utf8");
+}
+const redirectTo="http://localhost:5173/reset-password";
+const request=await anon.auth.resetPasswordForEmail(account.email,{redirectTo});
+const emailAccepted=!request.error;
+const generated=await admin.auth.admin.generateLink({type:"recovery",email:account.email,options:{redirectTo}});
+if(generated.error||!generated.data.properties?.hashed_token)throw generated.error??new Error("Recovery token was not generated");
+if(!generated.data.properties.action_link.includes(encodeURIComponent(redirectTo))&&!generated.data.properties.action_link.includes("redirect_to="))throw new Error("Recovery redirect was not included");
+const recovery=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_ANON_KEY);
+const verified=await recovery.auth.verifyOtp({type:"recovery",token_hash:generated.data.properties.hashed_token});
+if(verified.error)throw verified.error;
+const nextPassword=`${crypto.randomBytes(18).toString("base64url")}Aa1`;
+const update=await recovery.auth.updateUser({password:nextPassword});if(update.error)throw update.error;
+const oldLogin=await anon.auth.signInWithPassword(account);if(!oldLogin.error)throw new Error("Old password still works");
+const newLogin=await anon.auth.signInWithPassword({email:account.email,password:nextPassword});if(newLogin.error)throw newLogin.error;
+const reused=await recovery.auth.verifyOtp({type:"recovery",token_hash:generated.data.properties.hashed_token});if(!reused.error)throw new Error("Recovery token reuse was accepted");
+credentials.NO_ROLE.password=nextPassword;await writeFile(path,JSON.stringify(credentials),"utf8");
+console.log(`Recovery email request: ${emailAccepted?"configured":"missing"}`);
+console.log("Recovery redirect, password change, old/new login, and one-time token checks passed.");
+if(!emailAccepted)process.exitCode=2;

@@ -1,0 +1,4 @@
+import { readFile,readdir } from "node:fs/promises";import { extname,join } from "node:path";
+const roots=["apps","packages","supabase","docs","scripts"],allowed=new Set([".ts",".tsx",".js",".mjs",".sql",".md",".json",".example"]),pattern=/(SUPABASE_SERVICE_ROLE_KEY|REFERENCE_LOGIN_PASSWORD|SMTP_PASSWORD)\s*=\s*[^\s#]+/;
+const findings=[];async function walk(path){for(const entry of await readdir(path,{withFileTypes:true})){if(["node_modules","dist"].includes(entry.name))continue;const target=join(path,entry.name);if(entry.isDirectory())await walk(target);else if(allowed.has(extname(entry.name))&&pattern.test(await readFile(target,"utf8")))findings.push(target)}}
+for(const root of roots)await walk(root);if(findings.length){console.error("Potential populated secrets:",findings.join(", "));process.exit(1)}console.log("Secret scan passed.");

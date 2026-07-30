@@ -1,0 +1,2 @@
+import { describe,expect,it } from "vitest";import { liveConfigured,userClient } from "./helper";
+describe.skipIf(!liveConfigured)("customer isolation",()=>{it("customers cannot read each other's linked profile",async()=>{const a=await userClient("CUSTOMER_A"),b=await userClient("CUSTOMER_B");const {data:{user:bUser}}=await b.auth.getUser();const {data}=await a.from("profiles").select("id").eq("id",bUser!.id);expect(data).toEqual([])})});
